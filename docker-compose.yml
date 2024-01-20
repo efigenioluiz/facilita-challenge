@@ -6,12 +6,18 @@ services:
       context: ./frontend
     ports:
       - "3000:3000"
+    volumes:
+      - ./frontend:/usr/src/app
 
   backend:
     build:
       context: ./backend
     ports:
       - "5000:5000"
+    volumes:
+      - ./backend:/usr/src/app
+    networks:
+      - connection
     depends_on:
       - db
 
@@ -23,3 +29,9 @@ services:
       POSTGRES_DB: facilita_challenge
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+    networks:
+      - connection
+
+networks:
+  connection:
+    driver: bridge
