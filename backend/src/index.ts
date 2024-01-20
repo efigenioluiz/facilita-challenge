@@ -2,7 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import customerRouter from './routes/customer';
 
-
 const app = express();
 const port = 5000;
 

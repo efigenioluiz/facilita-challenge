@@ -1,14 +1,15 @@
 FROM node:20.6.0-alpine
 
+RUN export PATH=$PATH:/usr/local/bin
+
 WORKDIR /usr/src/app
 
-COPY backend/package*.json ./
+RUN npm cache clean --force
 
-RUN npm install
+# RUN npm install
 
-COPY backend/ .
-
-RUN npm run build
+# RUN apk add --no-cache postgresql-client && \
+#     psql -U postgres -d facilita_challenge -a -f migrations/create_tables.sql
 
 EXPOSE 5000
 

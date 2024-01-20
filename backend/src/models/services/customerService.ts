@@ -1,6 +1,6 @@
 // models/CustomerService.ts
-import { Customer } from '../Customer';
-import { CustomerRepository } from '../../repositories/CustomerRepository';
+import { Customer } from '../customer';
+import { CustomerRepository } from '../../repositories/customerRepository';
 
 export class CustomerService {
   static getAll(): Promise<Customer[]> {

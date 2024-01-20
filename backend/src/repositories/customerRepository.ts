@@ -1,6 +1,6 @@
 import { Pool } from 'pg';
 import { dbConfig } from '../config/database';
-import { Customer } from '../models/Customer';
+import { Customer } from '../models/customer';
 
 const pool = new Pool(dbConfig);
 
@@ -20,8 +20,8 @@ export class CustomerRepository {
     return result.rows[0];
   }
 
-  // static async updateCutomer(id: number, name: string, description: string): Promise<Customer> {
-  //   const result = await pool.query('UPDATE customers SET name = $2, description = $3 WHERE id = $1 RETURNING *', [id, name, description]);
+  // static async updateCutomer(id: number, name: string, email: string, coordinateX: string, coordinateY: string): Promise<Customer> {
+  //   const result = await pool.query('UPDATE customers SET name = $2, email = $3, coordinate_x = $4, coordinate_y = $5 WHERE id = $1 RETURNING *', [name, email,coordinateX, coordinateY]);
   //   return result.rows[0];
   // }
 

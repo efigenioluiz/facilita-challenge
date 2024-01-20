@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { CustomerService } from '../models/services/CustomerService';
+import { CustomerService } from '../models/services/customerService';
 
 export const customerController = {
   getAllCustomers: async (_req: Request, res: Response) => {
