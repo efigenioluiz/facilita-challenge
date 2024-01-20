@@ -1,16 +1,17 @@
-FROM node:20.6.0-alpine
-
-RUN export PATH=$PATH:/usr/local/bin
+FROM node:20.6.0
 
 WORKDIR /usr/src/app
 
-RUN npm cache clean --force
+COPY package*.json ./
 
-# RUN npm install
+RUN npm install
 
-# RUN apk add --no-cache postgresql-client && \
-#     psql -U postgres -d facilita_challenge -a -f migrations/create_tables.sql
+RUN npm install -g --save-dev typescript
+
+RUN npm install --save-dev @types/express @types/body-parser @types/pg
+
+COPY . .
 
 EXPOSE 5000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start:docker"]
