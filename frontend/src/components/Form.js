@@ -72,7 +72,7 @@ const Form = ({ getCustomers, onEdit, setOnEdit }) => {
         .put(process.env.REACT_APP_URL_API_CUSTOMER+"/api/customer/" + onEdit.id, {
           name: customer.name.value,
           email:customer.email.value,
-          fone: customer.phone.value,
+          phone: customer.phone.value,
           coordinateX: customer.coordinateX.value,
           coordinateY: customer.coordinateY.value,
         })
@@ -93,6 +93,7 @@ const Form = ({ getCustomers, onEdit, setOnEdit }) => {
 
     customer.name.value = "";
     customer.email.value = "";
+    customer.phone.value = "";
     customer.coordinateX.value = "";
     customer.coordinateY.value = "";
 
