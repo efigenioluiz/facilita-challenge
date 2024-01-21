@@ -23,7 +23,6 @@ Thumbs.db
 
 /coverage/
 
-*.js
 *.js.map
 *.d.ts
 
