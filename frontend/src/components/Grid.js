@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { FaTrash, FaEdit } from "react-icons/fa";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const Table = styled.table`
   width: 100%;
@@ -41,7 +41,7 @@ export const Td = styled.td`
   }
 `;
 
-const Grid = ({ customers, setCustomer, setOnEdit }) => {
+const Grid = ({ customers, setCustomers, setOnEdit }) => {
   const handleEdit = (item) => {
     setOnEdit(item);
   };
@@ -50,12 +50,13 @@ const Grid = ({ customers, setCustomer, setOnEdit }) => {
     await axios
       .delete(process.env.REACT_APP_URL_API_CUSTOMER+"/api/customer/" + id)
       .then(({ data }) => {
-        const newArray = customers.filter((user) => user.id !== id);
-        console.log(newArray)
-        setCustomer(newArray);
-        toast.success(data);
-      })
-      .catch(({ data }) => toast.error(data));
+        const newArray = customers.filter((customer) => customer.id !== id);
+        toast.success(data.email+' successfully deleted');
+        setCustomers(newArray);
+      }).catch((data) =>{
+        toast.error('Error') 
+      }
+      );
 
     setOnEdit(null);
   };
@@ -67,6 +68,8 @@ const Grid = ({ customers, setCustomer, setOnEdit }) => {
           <Th>Name</Th>
           <Th>Email</Th>
           <Th onlyWeb>Fone</Th>
+          <Th style={{textAlign: 'center' }}>X</Th>
+          <Th style={{textAlign: 'center' }}>Y</Th>
           <Th></Th>
           <Th></Th>
         </Tr>
@@ -76,9 +79,11 @@ const Grid = ({ customers, setCustomer, setOnEdit }) => {
           <Tr key={i}>
             <Td width="30%">{item.name}</Td>
             <Td width="30%">{item.email}</Td>
-            <Td width="20%" onlyWeb>
-              {item.fone}
+            <Td width="13%" onlyWeb>
+              {item.phone}
             </Td>
+            <Td style={{ width: '15%', textAlign: 'center' }}>{item.coordinate_x}</Td>
+            <Td style={{ width: '15%' }}>{item.coordinate_y}</Td>
             <Td alignCenter width="5%">
               <FaEdit onClick={() => handleEdit(item)} />
             </Td>

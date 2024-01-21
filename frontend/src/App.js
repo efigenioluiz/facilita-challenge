@@ -42,10 +42,10 @@ function App() {
     <>
       <Container>
         <Title>Customers</Title>
-        {/* <button onClick={() => setModalOpen(true)}></button> */}
         <Form onEdit={onEdit} setOnEdit={setOnEdit} getCustomers={getCustomers} />
         <Grid setOnEdit={setOnEdit} customers={customers} setCustomers={setCustomers} />
       </Container>
+        {/* <button onClick={() => setModalOpen(true)}></button> */}
       <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
 
         <h3>Content</h3>
