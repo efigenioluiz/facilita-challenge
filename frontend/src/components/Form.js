@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import Modal from "./Modal";
 
 const FormContainer = styled.form`
   display: flex;
@@ -41,6 +42,15 @@ const Button = styled.button`
 
 const Form = ({ getCustomers, onEdit, setOnEdit }) => {
   const ref = useRef();
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
   useEffect(() => {
     if (onEdit) {
@@ -136,6 +146,8 @@ const Form = ({ getCustomers, onEdit, setOnEdit }) => {
       </InputArea>
 
       <Button type="submit">Register!</Button>
+      <Button type="button" onClick={handleOpenModal} >Calculate Route!</Button>
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}/>
     </FormContainer>
   );
 };

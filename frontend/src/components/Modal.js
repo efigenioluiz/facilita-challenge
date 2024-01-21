@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -18,6 +19,8 @@ const ModalContent = styled.div`
   padding: 20px;
   border-radius: 8px;
   max-width: 600px;
+  overflow-y: auto; 
+  max-height: 80vh; 
 `;
 
 const CloseButton = styled.button`
@@ -30,18 +33,37 @@ const CloseButton = styled.button`
   margin-left: auto;
 `;
 
+const Modal = ({ isOpen, onClose }) => {
+  const [routesCalculate, setRoutesCalculate] = useState(null);
 
-const Modal = ({ isOpen, onClose, children }) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(process.env.REACT_APP_URL_API_CUSTOMER+"/api/routes/calculate");
+        setRoutesCalculate(response.data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    if (isOpen) {
+      fetchData();
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
     <ModalOverlay>
       <ModalContent>
-        {children}
+        {routesCalculate ? (
+          <pre>{JSON.stringify(routesCalculate, null, 2)}</pre>
+        ) : (
+          <p>Loading API Data</p>
+        )}
         <CloseButton onClick={onClose}>Close</CloseButton>
       </ModalContent>
     </ModalOverlay>
   );
 };
-
 export default Modal;
