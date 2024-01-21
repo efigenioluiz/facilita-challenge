@@ -6,6 +6,10 @@ export class CustomerService {
   static getAll(): Promise<Customer[]> {
     return CustomerRepository.getAllCustomers();
   }
+  
+  static getCustomersRoutes(): Promise<Customer[]> {
+    return CustomerRepository.getCustomersRoutes();
+  }
 
   static getById(id: number): Promise<Customer | undefined> {
     return CustomerRepository.getCustomerById(id);

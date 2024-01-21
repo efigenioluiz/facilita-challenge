@@ -1,8 +1,8 @@
 import express from 'express';
 import { customerController } from "../controllers/customerController"
 import { validateCustomerCreate } from "../middleware/validateCustomer" 
-const router = express.Router();
 
+const router = express.Router();
 
 router.post('/', validateCustomerCreate ,customerController.createCustomer);
 router.get('/:id', customerController.getCustomerById);

@@ -9,6 +9,21 @@ export class CustomerRepository {
     const result = await pool.query('SELECT * FROM customers');
     return result.rows;
   }
+  
+  static async getCustomersRoutes(): Promise<Customer[]> {
+    const result = await pool.query('SELECT * FROM customers');
+
+    const customers: Customer[] = result.rows.map(row => ({
+      id: row.id,
+      name: row.name,
+      email: row.email,
+      phone: row.phone,
+      coordinateX: row.coordinate_x,
+      coordinateY: row.coordinate_y,
+    }));
+  
+    return customers;
+  }
 
   static async getCustomerById(id: number): Promise<Customer | undefined> {
     const result = await pool.query('SELECT * FROM customers WHERE id = $1', [id]);
