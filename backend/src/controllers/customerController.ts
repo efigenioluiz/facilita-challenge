@@ -22,18 +22,24 @@ export const customerController = {
   },
 
   createCustomer: async (req: Request, res: Response) => {
-    const { name, email, coordinateX, coordinateY } = req.body;
-    console.log(name, email, coordinateX, coordinateY);
-    const newCustomer = await CustomerService.create(name, email, coordinateX, coordinateY);
+    const { name, email, phone, coordinateX, coordinateY } = req.body;
+    const newCustomer = await CustomerService.create(name, email, phone, coordinateX, coordinateY);
     res.json(newCustomer);
   },
+  
+  updateCustomer: async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { name, email, phone, coordinateX, coordinateY } = req.body;
 
-//   updateItem: async (req: Request, res: Response) => {
-//     const { id } = req.params;
-//     const { name, description } = req.body;
-//     const updatedCustomer = await CustomerService.update(Number(id), name, description);
-//     res.json(updatedCustomer);
-//   },
+    const customer = await CustomerService.getById(Number(id));
+    
+    if (!customer) {
+      return res.status(400).json({ error: { message: 'Customer not found' } });
+    }
+    
+    const updatedCustomer = await CustomerService.update(Number(id), name, email, phone, coordinateX, coordinateY);
+    res.json(updatedCustomer);
+  },
 
   deleteCustomer: async (req: Request, res: Response) => {
     const { id } = req.params;

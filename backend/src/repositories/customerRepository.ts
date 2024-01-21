@@ -20,15 +20,15 @@ export class CustomerRepository {
     return result.rows[0];
   }
 
-  static async createCustomer(name: string, email: string, coordinateX: string, coordinateY: string): Promise<Customer> {
-    const result = await pool.query('INSERT INTO customers (name, email, coordinate_x, coordinate_y) VALUES ($1, $2, $3, $4) RETURNING *', [name, email,coordinateX, coordinateY]);
+  static async createCustomer(name: string, email: string, phone: string, coordinateX: string, coordinateY: string): Promise<Customer> {
+    const result = await pool.query('INSERT INTO customers (name, email, phone,coordinate_x, coordinate_y) VALUES ($1, $2, $3, $4, $5) RETURNING *', [name, email, phone, coordinateX, coordinateY]);
     return result.rows[0];
   }
 
-  // static async updateCutomer(id: number, name: string, email: string, coordinateX: string, coordinateY: string): Promise<Customer> {
-  //   const result = await pool.query('UPDATE customers SET name = $2, email = $3, coordinate_x = $4, coordinate_y = $5 WHERE id = $1 RETURNING *', [name, email,coordinateX, coordinateY]);
-  //   return result.rows[0];
-  // }
+  static async updateCutomer(id: number, name: string, email: string, phone: string,coordinateX: string, coordinateY: string): Promise<Customer> {
+    const result = await pool.query('UPDATE customers SET name = $2, email = $3, phone = $4 ,coordinate_x = $5, coordinate_y = $6 WHERE id = $1 RETURNING *', [id,name, email, phone,coordinateX, coordinateY]);
+    return result.rows[0];
+  }
 
   static async deleteCustomer(id: number): Promise<Customer> {
     const result = await pool.query('DELETE FROM customers WHERE id = $1 RETURNING *', [id]);

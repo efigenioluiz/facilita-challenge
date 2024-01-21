@@ -8,6 +8,6 @@ router.post('/', validateCustomerCreate ,customerController.createCustomer);
 router.get('/:id', customerController.getCustomerById);
 router.delete('/:id', customerController.deleteCustomer);
 router.get('/', customerController.getAllCustomers);
-// router.put('/:id', customerController.updateItem);
+router.put('/:id', customerController.updateCustomer);
 
 export default router;

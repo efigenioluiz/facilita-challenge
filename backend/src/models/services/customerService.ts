@@ -11,13 +11,13 @@ export class CustomerService {
     return CustomerRepository.getCustomerById(id);
   }
 
-  static create(name: string, email: string, coordinateX: string, coordinateY: string): Promise<Customer> {
-    return CustomerRepository.createCustomer(name, email, coordinateX, coordinateY);
+  static create(name: string, email: string, phone: string , coordinateX: string, coordinateY: string): Promise<Customer> {
+    return CustomerRepository.createCustomer(name, email, phone,coordinateX, coordinateY);
   }
 
-  // static update(id: number, name: string, description: string): Promise<Customer> {
-  //   return CustomerRepository.updateCutomer(id, name, description);
-  // }
+  static update(id: number, name: string, email: string, phone: string , coordinateX: string, coordinateY: string): Promise<Customer> {
+    return CustomerRepository.updateCutomer(id, name, email, phone, coordinateX, coordinateY);
+  }
 
   static delete(id: number): Promise<Customer> {
     return CustomerRepository.deleteCustomer(id);
