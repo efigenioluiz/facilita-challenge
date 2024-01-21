@@ -1,13 +1,13 @@
 import express from 'express';
 import { customerController } from "../controllers/customerController"
-import { validateCustomerCreate } from "../middleware/validateCustomer" 
+import { validateCustomerCreateUpdate } from "../middleware/validateCustomer" 
 
 const router = express.Router();
 
-router.post('/', validateCustomerCreate ,customerController.createCustomer);
+router.post('/', validateCustomerCreateUpdate ,customerController.createCustomer);
 router.get('/:id', customerController.getCustomerById);
 router.delete('/:id', customerController.deleteCustomer);
 router.get('/', customerController.getAllCustomers);
-router.put('/:id', customerController.updateCustomer);
+router.put('/:id',validateCustomerCreateUpdate ,customerController.updateCustomer);
 
 export default router;

@@ -67,7 +67,7 @@ const Grid = ({ customers, setCustomers, setOnEdit }) => {
         <Tr>
           <Th>Name</Th>
           <Th>Email</Th>
-          <Th onlyWeb>Fone</Th>
+          <Th onlyWeb>Phone</Th>
           <Th style={{textAlign: 'center' }}>X</Th>
           <Th style={{textAlign: 'center' }}>Y</Th>
           <Th></Th>

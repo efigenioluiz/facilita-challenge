@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { RequestHandler } from 'express-serve-static-core';
 import { CustomerRepository } from '../repositories/customerRepository';
 
-export const validateCustomerCreate: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const validateCustomerCreateUpdate: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   const { name, email } = req.body;
 
   if (!name || !email) {

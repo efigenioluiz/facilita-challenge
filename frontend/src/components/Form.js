@@ -76,8 +76,15 @@ const Form = ({ getCustomers, onEdit, setOnEdit }) => {
           coordinateX: customer.coordinateX.value,
           coordinateY: customer.coordinateY.value,
         })
-        .then(({ data }) => toast.success(data))
-        .catch(({ data }) => toast.error(data));
+        .then(({ data }) => toast.success(`${data.email} Updated`))
+        .catch((error) => {
+          if (error.response) {
+            const errorMessage = error.response.data?.error?.message || "Unknown error try again later";
+            toast.error(errorMessage);
+          } else if (error.request) {
+            toast.error("Unknown error try again later");
+          } 
+        });
     } else {
       await axios
       .post(process.env.REACT_APP_URL_API_CUSTOMER+"/api/customer", {
