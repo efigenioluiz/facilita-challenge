@@ -49,8 +49,8 @@ const Form = ({ getCustomers, onEdit, setOnEdit }) => {
       customer.name.value = onEdit.name;
       customer.email.value = onEdit.email;
       customer.phone.value = onEdit.phone;
-      customer.coordinateX.value = onEdit.coordinateX;
-      customer.coordinateY.value = onEdit.coordinateY;
+      customer.coordinateX.value = onEdit.coordinate_x;
+      customer.coordinateY.value = onEdit.coordinate_y;
     }
   }, [onEdit]);
 
