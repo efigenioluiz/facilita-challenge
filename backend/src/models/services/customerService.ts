@@ -14,7 +14,7 @@ export class CustomerService {
   static getById(id: number): Promise<Customer | undefined> {
     return CustomerRepository.getCustomerById(id);
   }
-  static async getByArgs(searchTerm: string): Promise<Customer | undefined> {
+  static async getByArgs(searchTerm: string): Promise<Customer[] | undefined> {
       return CustomerRepository.getCustomersByArgs(searchTerm);
     }
 

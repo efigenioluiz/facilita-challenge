@@ -2,6 +2,7 @@ import GlobalStyle from "./styles/global";
 import styled from "styled-components";
 import Form from './components/Form';
 import Grid from "./components/Grid";
+import Search from "./components/Search";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -40,6 +41,7 @@ function App() {
     <>
       <Container>
         <Title>Customers</Title>
+        <Search onSearch={setCustomers} />
         <Form onEdit={onEdit} setOnEdit={setOnEdit} getCustomers={getCustomers} />
         <Grid setOnEdit={setOnEdit} customers={customers} setCustomers={setCustomers} />
       </Container>
