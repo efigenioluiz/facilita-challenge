@@ -80,13 +80,21 @@ Está documentação disponibiliza detalhes sobre Facilita Challenge API
 - **Method:** GET
 - **URL:** `http://localhost:5000/api/routes/calculate}`
 
+### Search by Info Customer
+
+- **Method:** GET
+- **URL:** `http://localhost:5000/api/customer/search?searchTerm=pedro`
+
 ## ☕ Usando Facilita Challenge
 
 Basicamente é um CRUD de clientes, mas o grande foco dessa aplicação é resolver esse desafio proposto pela a Facilita
 
 > O objetivo é calcular a rota partindo da empresa (0,0) e que passe pela localização de todos os clientes cadastrados no banco de dados e retorne à empresa no final. A rota deve ser calculada para ter a menor distância possível.
 
+> OBS: não podia usar ORM então utilizei o pattern Repository
+
 Eu usei a técnica de brute force para percorrer todas as rotas e ir ordenando pela order de mais perto (0,0)
 
 ![Demonstração](./images/modal-exemple.png)
 ![Frontend](./images/frontend.png)
+![Search](./images/search.png)
