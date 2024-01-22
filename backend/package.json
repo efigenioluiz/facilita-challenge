@@ -18,12 +18,14 @@
     "@types/node": "^20.11.5",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-list-endpoints": "^6.0.0",
     "permutations": "^0.0.1",
     "pg": "^8.11.3",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
+    "@types/express-list-endpoints": "^6.0.3",
     "@types/pg": "^8.10.9",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"

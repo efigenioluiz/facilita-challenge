@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import expressListEndpoints from 'express-list-endpoints';
 import customerRouter from './routes/customer';
 import calculateRouter from './routes/calculate';
 import cors from 'cors';

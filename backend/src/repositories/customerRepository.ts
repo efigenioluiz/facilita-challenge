@@ -34,6 +34,11 @@ export class CustomerRepository {
     const result = await pool.query('SELECT * FROM customers WHERE email = $1', [email]);
     return result.rows[0];
   }
+  
+  static async getCustomersByArgs(searchTerm: string): Promise<Customer | undefined> {
+    const result = await pool.query('SELECT * FROM customers WHERE name ILIKE $1 OR email ILIKE $1 OR phone ILIKE $1', [searchTerm]);
+    return result.rows[0];
+  }
 
   static async createCustomer(name: string, email: string, phone: string, coordinateX: string, coordinateY: string): Promise<Customer> {
     const result = await pool.query('INSERT INTO customers (name, email, phone,coordinate_x, coordinate_y) VALUES ($1, $2, $3, $4, $5) RETURNING *', [name, email, phone, coordinateX, coordinateY]);

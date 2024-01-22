@@ -14,6 +14,9 @@ export class CustomerService {
   static getById(id: number): Promise<Customer | undefined> {
     return CustomerRepository.getCustomerById(id);
   }
+  static async getByArgs(searchTerm: string): Promise<Customer | undefined> {
+      return CustomerRepository.getCustomersByArgs(searchTerm);
+    }
 
   static create(name: string, email: string, phone: string , coordinateX: string, coordinateY: string): Promise<Customer> {
     return CustomerRepository.createCustomer(name, email, phone,coordinateX, coordinateY);
