@@ -42,6 +42,7 @@ Está documentação disponibiliza detalhes sobre Facilita Challenge API
     "name": "maria",
     "email": "maria@email.com",
     "coordinateX": "34.56",
+    "phone": "91771111",
     "coordinateY": "78.90"
   }
   ```
@@ -70,6 +71,7 @@ Está documentação disponibiliza detalhes sobre Facilita Challenge API
   {
     "name": "maria",
     "email": "maria@email.com",
+    "phone": "91771111",
     "coordinateX": "34.56",
     "coordinateY": "78.90"
   }
